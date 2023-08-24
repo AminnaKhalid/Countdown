@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/style.css">
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" /> -->
+
+    <title>Date, Time Counter</title>
+</head>
+
+<body onload="startTime()">
+    <div class="container bg-gradient-to-r from-indigo-700 via-purple-600 to-pink-700 h-screen">
+        <nav class="absolute">
+            <ul class="flex flex-row">
+                <li class="mx-2 my-4">
+                    <button type="button"
+                        class="bg-gradient-to-r from-pink-500 to-blue-600 px-4 py-3 font-bold rounded-lg text-2xl text-purple-950">
+                        <a href="/index.html">Time</a></button>
+                </li>
+                <li class="mx-2 my-4">
+                    <button type="button"
+                        class="bg-gradient-to-r from-pink-500 to-blue-600 px-4 py-3 font-bold rounded-lg text-2xl text-purple-950">
+                        <a href="date.html">Date</a></button>
+                </li>
+                <li class="mx-2 my-4">
+                    <button type="button"
+                        class="bg-gradient-to-r from-pink-500 to-blue-600 px-4 py-3 font-bold rounded-lg text-2xl text-purple-950">
+                        <a href="day.html">Day</a></button>
+                </li>
+                <li class="mx-2 my-4">
+                    <button type="button"
+                        class="bg-gradient-to-r from-pink-500 to-blue-600 px-4 py-3 font-bold rounded-lg text-2xl text-purple-950">
+                        <a href="countdown.html">CountDown</a></button>
+                </li>
+            </ul>
+
+        </nav>
+        <div class="flex flex-col justify-center items-center h-screen">
+
+
+            <div id="txt" class="text-7xl text-black font-mono font-bold animate-bounce"></div>
+        </div>
+
+    </div>
+
+    <script>
+        function startTime() {
+            const today = new Date();
+            let h = today.getHours();
+            let m = today.getMinutes();
+            let s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML = h + " : " + m + " : " + s;
+            setTimeout(startTime, 1000);
+        }
+
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };
+            return i;
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+
+
+</body>
+
+</html>
