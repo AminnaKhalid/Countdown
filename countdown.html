@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/style.css">
+    <title>Date, Time, Counter</title>
+</head>
+
+<body onload="startTime()">
+    <!-- container -->
+    <div class="container bg-gradient-to-r from-indigo-700 via-purple-600 to-pink-700 h-screen">
+        <!-- navbar -->
+        <nav class="absolute">
+            <ul class="flex flex-row">
+                <li class="mx-2 my-4">
+                    <button type="button"
+                        class="bg-gradient-to-r from-pink-500 to-blue-600 px-4 py-3 font-bold rounded-lg text-2xl text-purple-950">
+                        <a href="/index.html">Time</a></button>
+                </li>
+                <li class="mx-2 my-4">
+                    <button type="button"
+                        class="bg-gradient-to-r from-pink-500 to-blue-600 px-4 py-3 font-bold rounded-lg text-2xl text-purple-950">
+                        <a href="date.html">Date</a></button>
+                </li>
+                <li class="mx-2 my-4">
+                    <button type="button"
+                        class="bg-gradient-to-r from-pink-500 to-blue-600 px-4 py-3 font-bold rounded-lg text-2xl text-purple-950">
+                        <a href="day.html">Day</a></button>
+                </li>
+                <li class="mx-2 my-4">
+                    <button type="button"
+                        class="bg-gradient-to-r from-pink-500 to-blue-600 px-4 py-3 font-bold rounded-lg text-2xl text-purple-950">
+                        <a href="countdown.html">CountDown</a></button>
+                </li>
+            </ul>
+
+        </nav>
+        <div class="flex flex-col justify-center items-center h-screen">
+
+
+            <div id="demo" class="text-7xl text-black font-serif font-bold animate-bounce"></div>
+        </div>
+
+    </div>
+
+
+    <script>
+        // timer will go till this date
+        var countDownDate = new Date("Sep 5, 2024 12:56:23");
+        // update after every one second
+        var x = setInterval(function () {
+            // date of now
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("demo").innerHTML = ` ${days} d ${hours} h ${minutes} m ${seconds} s `;
+
+
+
+
+        }, 1000);
+
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "Expired";
+
+
+        }
+    </script>
+
+</body>
+
+</html>
